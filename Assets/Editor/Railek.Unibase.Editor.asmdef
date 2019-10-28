@@ -1,0 +1,16 @@
+{
+    "name": "Railek.Unibase.Editor",
+    "references": [
+        "GUID:b1135243173b1124a89e24630fd454bb"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
