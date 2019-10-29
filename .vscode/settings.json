@@ -9,6 +9,7 @@
         "**/*.*.meta": true,
         "**/*.unity": true,
         "**/*.unityproj": true,
+        "**/*.csproj": true,
         "**/*.sln": true,
         "**/*.mat": true,
         "**/*.fbx": true,
