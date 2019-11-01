@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "ms-dotnettools.csharp",
+        "Unity.unity-debug",
+        "kleber-swf.unity-code-snippets",
+        "EditorConfig.EditorConfig",
+        "yzhang.markdown-all-in-one",
+        "slevesque.shader"
+    ]
+}
