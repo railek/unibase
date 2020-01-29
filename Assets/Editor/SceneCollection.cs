@@ -1,11 +1,16 @@
-﻿using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEditor.SceneManagement;
 
 namespace Railek.Unibase.Editor
 {
     public class SceneCollection : ScriptableObject
     {
         public SceneSetup[] setup;
+
+        public void SaveSetup()
+        {
+            setup = EditorSceneManager.GetSceneManagerSetup();
+        }
 
         public void LoadSetup()
         {
@@ -36,11 +41,6 @@ namespace Railek.Unibase.Editor
             }
 
             EditorSceneManager.RestoreSceneManagerSetup(newSetup);
-        }
-
-        public void SaveSetup()
-        {
-            setup = EditorSceneManager.GetSceneManagerSetup();
         }
     }
 }

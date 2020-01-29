@@ -1,20 +1,48 @@
 ﻿using Railek.Unibase.Utilities;
 using UnityEditor;
 using UnityEngine;
+using System.IO;
 
 namespace Railek.Unibase.Editor
 {
     [CustomEditor(typeof(SceneCollection))]
     public class SceneCollectionEditor : EditorBase
     {
-        [MenuItem("Scene/Save Scene Setup")]
-        public static void SaveSetup()
+        [MenuItem("Railek/Save Scene Setup")]
+        public static void CreateSceneSetup()
         {
-            var setupFile = Asset.Create<SceneCollection>("Assets/Resources/");
-            setupFile.SaveSetup();
+            Create<SceneCollection>("Assets/Resources/");
+        }
+
+        public static T Create<T>(string relativePath) where T : SceneCollection
+        {
+            if (!Directory.Exists(relativePath))
+            {
+                Directory.CreateDirectory(relativePath);
+            }
+
+            if (string.IsNullOrEmpty(relativePath))
+            {
+                return null;
+            }
+
+            var asset = CreateInstance<T>();
+            asset.SaveSetup();
+
+            var typeName = typeof(T).Name;
+
+            AssetDatabase.CreateAsset(asset, relativePath + typeName + ".asset");
+            EditorUtility.SetDirty(asset);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            EditorUtility.FocusProjectWindow();
+            Selection.activeObject = asset;
+
+            return asset;
         }
 
         private SerializedProperty _setupProperty;
+        private SceneCollection _collection;
 
         protected override void OnEnable()
         {
@@ -23,35 +51,33 @@ namespace Railek.Unibase.Editor
 
         public override void OnInspectorGUI()
         {
-            base.OnInspectorGUI();
-
-            var setup = target as SceneCollection;
+            _collection = (SceneCollection)target;
 
             EditorGUILayout.PropertyField(_setupProperty, true);
 
-            GUILayout.BeginHorizontal();
+            DrawButtons(_collection);
 
-            if (GUILayout.Button("Save Current Setup"))
-            {
-                if (setup != null)
-                {
-                    setup.SaveSetup();
-                }
-            }
+            serializedObject.Update();
+            serializedObject.ApplyModifiedProperties();
+        }
+
+        private void DrawButtons(SceneCollection collection)
+        {
+            GUILayout.BeginHorizontal();
 
             if (GUILayout.Button("Load"))
             {
-                if (setup != null)
+                if (collection != null)
                 {
-                    setup.LoadSetup();
+                    collection.LoadSetup();
                 }
             }
 
             if (GUILayout.Button("Load (Inclusive)"))
             {
-                if (setup != null)
+                if (collection != null)
                 {
-                    setup.LoadSetupInclusive();
+                    collection.LoadSetupInclusive();
                 }
             }
 
