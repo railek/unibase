@@ -1,6 +1,6 @@
 {
   "name": "com.railek.unibase",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "displayName": "Unibase",
   "description": "Lightweight library of commonly used tools, scripts and core components for Unity projects",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/railek/unibase"
   },
   "author": "Railek <jean@railek.com>",
-  "unity": "2019.2",
+  "unity": "2019.3",
   "license": "MIT",
   "keywords": [
     "tools",
