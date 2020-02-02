@@ -1,10 +1,12 @@
 {
     "recommendations": [
-        "ms-dotnettools.csharp",
-        "Unity.unity-debug",
         "kleber-swf.unity-code-snippets",
-        "EditorConfig.EditorConfig",
+        "ms-dotnettools.csharp",
+        "slevesque.shader",
+        "tobiah.unity-tools",
+        "Unity.unity-debug",
+        "yclepticstudios.unity-snippets",
         "yzhang.markdown-all-in-one",
-        "slevesque.shader"
+        "litefeel.shaderlabformatter"
     ]
 }
